@@ -47,7 +47,7 @@ var AjaxFlowTestModel = function () {
 			$.ajax({
 				url: url,
 				async: false,
-				method: 'post',
+				method: 'get',
 				data: { "message": "Method called -> " + method, "shortinit": ( method == "fast" ) }
 			}).success(function( data ) {
 						self.ajaxflow_result( self.ajaxflow_result() + data );
