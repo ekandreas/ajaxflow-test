@@ -56,44 +56,14 @@
         </div><!-- /.row -->
 
         <div class="row">
-          <div id="fast_lane1" class="col-lg-4">
-						<a data-bind="click: function(data, event) { callAjax( 'fast', 1, data, event) }" href="#">
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-xs-8">
-											<i class="fa fa-bolt fa-5x"></i>
-											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'fast', 10, data, event) }, clickBubble: false">x10</button>
-											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'fast', 100, data, event) }, clickBubble: false">x100</button>
-											<button class="btn btn-inverse">Clear</button>
-										</div>
-										<div class="col-xs-4 text-right">
-											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>
-											<p class="announcement-text">milliseconds</p>
-										</div>
-									</div>
-								</div>
-									<div class="panel-footer announcement-bottom">
-										<div class="row">
-											<div class="col-xs-10">Click here to<br/>make a call via ajaxflow (shortinit activated)</div>
-											<div class="col-xs-2 text-right">
-												<i class="fa fa-cogs"></i>
-											</div>
-										</div>
-									</div>
-							</div>
-						</a>
-						<div data-bind="html: ajaxflow_result"></div>
-					</div>
-          <div id="fast_lane2" class="col-lg-4">
+          <div id="fast_lane2" class="col-lg-6">
 						<a data-bind="click: function(data, event) { callAjax( 'normal', 1, data, event) }" href="#">
-							<div class="panel panel-warning">
+							<div class="panel panel-success">
 								<div class="panel-heading">
 									<div class="row">
 										<div class="col-xs-6">
 											<i class="fa fa-rocket fa-5x"></i>
 											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'normal', 10, data, event) }, clickBubble: false">x10</button>
-											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'normal', 100, data, event) }, clickBubble: false">x100</button>
 										</div>
 										<div class="col-xs-6 text-right">
 											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>
@@ -113,7 +83,7 @@
 						</a>
 						<div data-bind="html: ajaxflow_result"></div>
 					</div>
-          <div id="fast_lane3" class="col-lg-4">
+          <div id="fast_lane3" class="col-lg-6">
 						<a data-bind="click: function(data, event) { callAjax( 'traditional', 1, data, event) }" href="#">
 							<div class="panel panel-danger">
 								<div class="panel-heading">
@@ -121,7 +91,6 @@
 										<div class="col-xs-6">
 											<i class="fa fa-spinner fa-5x"></i>
 											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'traditional', 10, data, event) }, clickBubble: false">x10</button>
-											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'traditional', 100, data, event) }, clickBubble: false">x100</button>
 										</div>
 										<div class="col-xs-6 text-right">
 											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>

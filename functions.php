@@ -1,5 +1,6 @@
 <?php
 
+/** TODO: if ajaxflow not a plugin, include it in your theme or plugin as a class */
 // include_once WP_PLUGIN_DIR . '/ajaxflow/ajaxflow.php';
 
 add_action( 'ajaxflow_fast', 'php_says_hello' );
@@ -14,7 +15,7 @@ function php_says_hello(){
 	?>
 	<div class="alert alert-info alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-		You have called for action with message '<?php echo $_REQUEST[ 'message' ]; ?>'.<br/>
+		You have called for action with message<br/>'<?php echo $_REQUEST[ 'message' ]; ?>'.<br/>
 		PHP time is <?php echo date( 'Y-m-d H:i:s' ); ?>
 	</div>
 	<?php

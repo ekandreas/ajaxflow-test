@@ -11,11 +11,11 @@ jQuery(document).ready(function ($) {
 				$("#ajaxloader").hide();
 			});
 
-	ajaxflow_test_model1 = new AjaxFlowTestModel();
+	//ajaxflow_test_model1 = new AjaxFlowTestModel();
 	ajaxflow_test_model2 = new AjaxFlowTestModel();
 	ajaxflow_test_model3 = new AjaxFlowTestModel();
 
-	ko.applyBindings( ajaxflow_test_model1, document.getElementById( "fast_lane1" ) );
+	//ko.applyBindings( ajaxflow_test_model1, document.getElementById( "fast_lane1" ) );
 	ko.applyBindings( ajaxflow_test_model2, document.getElementById( "fast_lane2" ) );
 	ko.applyBindings( ajaxflow_test_model3, document.getElementById( "fast_lane3" ) );
 
@@ -31,7 +31,7 @@ var AjaxFlowTestModel = function () {
 	self.callAjax = function( method, loop ) {
 
 		var url = "ajaxflow/standard";
-		if( method == "fast" ) url = "/ajaxflow/fast";
+		//if( method == "fast" ) url = "/ajaxflow/fast";
 		if( method == "standard" ) url = "/ajaxflow/standard";
 		if( method == "traditional" ) url = "/wp-admin/admin-ajax.php?action=traditional";
 
@@ -39,7 +39,7 @@ var AjaxFlowTestModel = function () {
 
 		params["message"] = "Method called: " + method;
 
-		if( method == "fast" ) params["shortinit"] = true;
+		//if( method == "fast" ) params["shortinit"] = true;
 
 		var end = 0;
 		var start = new Date().getTime();
@@ -48,7 +48,7 @@ var AjaxFlowTestModel = function () {
 				url: url,
 				async: false,
 				method: 'post',
-				data: params
+				data: { "message": "Method called -> " + method, "shortinit": ( method == "fast" ) }
 			}).success(function( data ) {
 						self.ajaxflow_result( self.ajaxflow_result() + data );
 					});
