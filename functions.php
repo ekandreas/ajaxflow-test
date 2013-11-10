@@ -1,7 +1,7 @@
 <?php
 
 /** TODO: if ajaxflow not a plugin, include it in your theme or plugin as a class */
-// include_once WP_PLUGIN_DIR . '/ajaxflow/ajaxflow.php';
+include_once WP_PLUGIN_DIR . '/ajaxflow/ajaxflow.php';
 
 add_action( 'ajaxflow_fast', 'php_says_hello' );
 add_action( 'ajaxflow_standard', 'php_says_hello' );
