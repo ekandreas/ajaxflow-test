@@ -50,23 +50,26 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h1>Faster ajax call <small>in WordPress</small></h1>
-						<p><img id="ajaxloader" style="display: none;" src="<?php echo get_template_directory_uri(); ?>/ajax-loader.gif" alt="ajax-loader" />&nbsp;</p>
+            <h1>Faster ajax call <small>in WordPress</small> <img id="ajaxloader" style="display: none;" src="<?php echo get_template_directory_uri(); ?>/ajax-loader.gif" alt="ajax-loader" /></h1>
+						<p>&nbsp;</p>
           </div>
         </div><!-- /.row -->
 
         <div class="row">
-          <div class="col-lg-4">
-						<a data-bind="click: callAjaxFastFlow" href="#">
+          <div id="fast_lane1" class="col-lg-4">
+						<a data-bind="click: function(data, event) { callAjax( 'fast', 1, data, event) }" href="#">
 							<div class="panel panel-success">
 								<div class="panel-heading">
 									<div class="row">
-										<div class="col-xs-6">
+										<div class="col-xs-8">
 											<i class="fa fa-bolt fa-5x"></i>
+											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'fast', 10, data, event) }, clickBubble: false">x10</button>
+											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'fast', 100, data, event) }, clickBubble: false">x100</button>
+											<button class="btn btn-inverse">Clear</button>
 										</div>
-										<div class="col-xs-6 text-right">
-											<p class="announcement-heading">0</p>
-											<p class="announcement-text">seconds to callback action</p>
+										<div class="col-xs-4 text-right">
+											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>
+											<p class="announcement-text">milliseconds</p>
 										</div>
 									</div>
 								</div>
@@ -80,19 +83,21 @@
 									</div>
 							</div>
 						</a>
-						<div id="ajaxresult1"></div>
+						<div data-bind="html: ajaxflow_result"></div>
 					</div>
-          <div class="col-lg-4">
-						<a data-bind="click: callAjaxFlow" href="#">
+          <div id="fast_lane2" class="col-lg-4">
+						<a data-bind="click: function(data, event) { callAjax( 'normal', 1, data, event) }" href="#">
 							<div class="panel panel-warning">
 								<div class="panel-heading">
 									<div class="row">
 										<div class="col-xs-6">
 											<i class="fa fa-rocket fa-5x"></i>
+											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'normal', 10, data, event) }, clickBubble: false">x10</button>
+											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'normal', 100, data, event) }, clickBubble: false">x100</button>
 										</div>
 										<div class="col-xs-6 text-right">
-											<p class="announcement-heading">0</p>
-											<p class="announcement-text">seconds to callback action</p>
+											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>
+											<p class="announcement-text">milliseconds</p>
 										</div>
 									</div>
 								</div>
@@ -106,19 +111,21 @@
 									</div>
 							</div>
 						</a>
-						<div id="ajaxresult2"></div>
+						<div data-bind="html: ajaxflow_result"></div>
 					</div>
-          <div class="col-lg-4">
-						<a data-bind="click: callAjax" href="#">
+          <div id="fast_lane3" class="col-lg-4">
+						<a data-bind="click: function(data, event) { callAjax( 'traditional', 1, data, event) }" href="#">
 							<div class="panel panel-danger">
 								<div class="panel-heading">
 									<div class="row">
 										<div class="col-xs-6">
 											<i class="fa fa-spinner fa-5x"></i>
+											<button class="btn btn-success" data-bind="click: function(data, event) { callAjax( 'traditional', 10, data, event) }, clickBubble: false">x10</button>
+											<button class="btn btn-warning" data-bind="click: function(data, event) { callAjax( 'traditional', 100, data, event) }, clickBubble: false">x100</button>
 										</div>
 										<div class="col-xs-6 text-right">
-											<p class="announcement-heading">0</p>
-											<p class="announcement-text">seconds to callback action</p>
+											<p class="announcement-heading" data-bind="html: ajaxflow_time"></p>
+											<p class="announcement-text">milliseconds</p>
 										</div>
 									</div>
 								</div>
@@ -132,7 +139,7 @@
 									</div>
 							</div>
 						</a>
-						<div id="ajaxresult3"></div>
+						<div data-bind="html: ajaxflow_result"></div>
           </div>
 
         </div><!-- /.row -->

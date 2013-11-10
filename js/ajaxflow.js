@@ -1,5 +1,7 @@
 
-var ajaxflow_test_model;
+var ajaxflow_test_model1;
+var ajaxflow_test_model2;
+var ajaxflow_test_model3;
 
 jQuery(document).ready(function ($) {
 
@@ -9,8 +11,13 @@ jQuery(document).ready(function ($) {
 				$("#ajaxloader").hide();
 			});
 
-	ajaxflow_test_model = new AjaxFlowTestModel();
-	ko.applyBindings( ajaxflow_test_model );
+	ajaxflow_test_model1 = new AjaxFlowTestModel();
+	ajaxflow_test_model2 = new AjaxFlowTestModel();
+	ajaxflow_test_model3 = new AjaxFlowTestModel();
+
+	ko.applyBindings( ajaxflow_test_model1, document.getElementById( "fast_lane1" ) );
+	ko.applyBindings( ajaxflow_test_model2, document.getElementById( "fast_lane2" ) );
+	ko.applyBindings( ajaxflow_test_model3, document.getElementById( "fast_lane3" ) );
 
 });
 
@@ -18,42 +25,36 @@ var AjaxFlowTestModel = function () {
 
 	var self = this;
 
-	self.callAjaxFastFlow = function() {
+	self.ajaxflow_result = ko.observable('');
+	self.ajaxflow_time = ko.observable(0);
 
-		$.ajax({
-			url: "/ajaxflow/fast",
-			async: false,
-			method: 'post',
-			data: { "shortinit" : true }
-		}).success(function( data ) {
-				$("#ajaxresult1").prepend( data );
-			});
+	self.callAjax = function( method, loop ) {
 
-		return false;
-	}
+		var url = "ajaxflow/standard";
+		if( method == "fast" ) url = "/ajaxflow/fast";
+		if( method == "standard" ) url = "/ajaxflow/standard";
+		if( method == "traditional" ) url = "/wp-admin/admin-ajax.php?action=traditional";
 
-	self.callAjaxFlow = function() {
+		var params = new Array();
 
-		$.ajax({
-			url: "/ajaxflow/standard",
-			async: false,
-			method: 'post'
-		}).success(function( data ) {
-					$("#ajaxresult2").prepend( data );
-				});
+		params["message"] = "Method called: " + method;
 
-		return false;
-	}
+		if( method == "fast" ) params["shortinit"] = true;
 
-	self.callAjax = function() {
-
-		$.ajax({
-			url: "/wp-admin/admin-ajax.php?action=traditional",
-			async: false,
-			method: 'post'
-		}).success(function( data ) {
-					$("#ajaxresult3").prepend( data );
-				});
+		var end = 0;
+		var start = new Date().getTime();
+		for( var i=0; i<loop; i++ ){
+			$.ajax({
+				url: url,
+				async: false,
+				method: 'post',
+				data: params
+			}).success(function( data ) {
+						self.ajaxflow_result( self.ajaxflow_result() + data );
+					});
+		}
+		end = new Date().getTime();
+		self.ajaxflow_time( end-start );
 
 		return false;
 	}
